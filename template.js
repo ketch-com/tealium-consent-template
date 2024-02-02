@@ -1,4 +1,4 @@
-(function ketchCustomConsentIntegration (window) {
+(function myCustomConsentIntegration (window) {
   window.tealiumCmpIntegration = window.tealiumCmpIntegration || {}
   window.tealiumCmpIntegration.cmpName = 'Ketch'
   window.tealiumCmpIntegration.cmpIntegrationVersion = 'v0.0.1'
