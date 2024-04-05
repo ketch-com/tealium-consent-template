@@ -40,21 +40,23 @@
     }
 
     const consentCookieValue = getCookie('_ketch_consent_v1_');
-    let consent = {}
+    let consent = getDefaultConsent();
     if (consentCookieValue) {
       const decodedValue = decodeCookieValue(consentCookieValue);
-      const cookieConsent = JSON.parse(decodedValue);
-      for (const purposeCode in cookieConsent) {
-        const val = cookieConsent[purposeCode];
-        if (val) {
-          const status = val.status;
-          consent[purposeCode] = status === 'granted' ? true : false;
+      if (decodedValue) {
+        const cookieConsent = JSON.parse(decodedValue);
+        if (cookieConsent) {
+          for (const purposeCode in cookieConsent) {
+            const val = cookieConsent[purposeCode];
+            if (val) {
+              const status = val.status;
+              consent[purposeCode] = status === 'granted' ? true : false;
+            }
+          }
         }
       }
-
-    } else {
-      consent = getDefaultConsent()
-    }
+    } 
+        
     return {'consent': consent};
   }
 
