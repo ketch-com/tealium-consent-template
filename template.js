@@ -53,7 +53,6 @@
       }
 
     } else {
-      console.log('cmpFetchCurrentConsentDecision: setting default consent');
       consent = getDefaultConsent()
     }
     return {'consent': consent};
